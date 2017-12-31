@@ -44,7 +44,9 @@
 			   })
 			   .attr("y", 0)
 			   .attr("width", w / dataset.length - barPadding)
-			   .attr("height", 100);
+			   .attr("height", function(d){
+			   		return d*2;
+			   });
 			/*var circles = svg.selectAll("circle")
 							 .data(dataset)
 							 .enter()
