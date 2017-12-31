@@ -29,7 +29,7 @@
 				.style("height", function(d) {
 					return d*5 + "px";
 				});*/
-			var w = 750, h = 100;
+			var w = 750, h = 100, barPadding = 1;
 			var svg = d3.select("body")
 						.append("svg")
 						.attr("width", w)
@@ -43,7 +43,7 @@
 			   		return i * (w / dataset.length);
 			   })
 			   .attr("y", 0)
-			   .attr("width", 20)
+			   .attr("width", w / dataset.length - barPadding)
 			   .attr("height", 100);
 			/*var circles = svg.selectAll("circle")
 							 .data(dataset)
