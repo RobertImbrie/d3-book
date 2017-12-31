@@ -39,7 +39,6 @@
 				});*/
 			var w = 750, h = 100, barPadding = 1, height,
 				maxData = dataset.reduce(function(a,b){ return Math.max(a, b); });
-			console.log(maxData);
 			var svg = d3.select("body")
 						.append("svg")
 						.attr("width", w)
@@ -51,11 +50,25 @@
 			   .append("rect")
 			   .attrs({
 			   		x: function(d,i){ return i * (w / dataset.length); },
-			   		y: function(d){ return h - h*(d/maxData); },
+			   		y: function(d){ return h - h * (d / maxData); },
 			   		width: w / dataset.length - barPadding,
-			   		height: function(d){ return h*(d/maxData); },
+			   		height: function(d){ return h * (d / maxData); },
 			   		fill: function(d){ return "rgb(0,0," + d*10 + ")"}
 			   });
+
+			svg.selectAll("text")
+				.data(dataset)
+				.enter()
+				.append( "text" )
+				.text( function(d) { return d; })
+				.attrs({
+					x: function(d, i){ return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2},
+					y: function(d){ return h - h*(d / maxData) + 15},
+					"font-family": "sans-serif",
+					"font-size": "11px",
+					"fill": "white",
+					"text-anchor": "middle"
+				});
 			/*var circles = svg.selectAll("circle")
 							 .data(dataset)
 							 .enter()
