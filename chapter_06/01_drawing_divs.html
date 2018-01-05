@@ -37,15 +37,16 @@
 	<body>
 		<script type="text/javascript">
 		
-			var dataset = [
-				[5, 20],
-				[40, 90],
-				[250, 50],
-				[100, 33],
-				[330, 95],
-				[410, 12],
-				[600, 150]
-			];/*[ 25, 7, 5, 26, 11, 8, 25, 14, 23, 19, 14, 11, 22, 29, 11, 13, 12, 17, 18, 10, 24, 18, 25, 9, 3 ];*/
+			var dataset = [],
+				dataPoints = 50,
+				xRange = Math.random() * 1000,
+				yRange = Math.random() * 1000;
+				for( var i = 0; i < dataPoints; i++){
+					dataset.push([
+						Math.floor(Math.random() * xRange),
+						Math.floor(Math.random() * yRange)
+					]);
+				}
 			
 			/*d3.select("body").selectAll("div")
 				.data(dataset)
