@@ -47,21 +47,22 @@
 			var w = 750,
 				h = 100,
 				barPadding = 1,
-				padding = 20,
+				margin = {top: 30, right: 30, bottom: 30, left: 30},
 				height,
 				maxData = dataset.reduce(function(a,b){ return Math.max(a, b); });
+
 			var svg = d3.select("body")
 						.append("svg")
-						.attr("width", w)
-						.attr("height", h);
+						.attr("width", w + margin.left + margin.right)
+						.attr("height", h + margin.top + margin.bottom);
 
 			var xScale = d3.scaleLinear()
 						.domain([0, d3.max(dataset, function(d) { return d[0] ;})])
-						.range(	[padding,  w - padding]);
+						.range(	[0,  w]);
 
 			var yScale = d3.scaleLinear()
 						.domain([0, d3.max(dataset, function(d) { return d[1] ;})])
-						.range(	[h - padding,  padding]);
+						.range(	[h,  0]);
 
 			svg.selectAll("circle")
 				.data(dataset)
