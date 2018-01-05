@@ -55,8 +55,8 @@
 				.style("height", function(d) {
 					return d*5 + "px";
 				});*/
-			var w = 750,
-				h = 100,
+			var w = 500,
+				h = 500,
 				barPadding = 1,
 				margin = {top: 30, right: 30, bottom: 30, left: 30},
 				height,
@@ -85,6 +85,10 @@
 
 			var xAxis = d3.axisBottom()
 							.scale(xScale)
+							.ticks(5);
+
+			var yAxis = d3.axisLeft()
+							.scale(yScale)
 							.ticks(5);
 
 			svg.selectAll("circle")
@@ -117,50 +121,13 @@
 					class: 		"axis",
 					transform: 	"translate(0," + h + ")" })
 				.call(xAxis);
-			/*svg.selectAll("rect")
-			   .data(dataset)
-			   .enter()
-			   .append("rect")
-			   .attrs({
-			   		x: function(d,i){ return i * (w / dataset.length); },
-			   		y: function(d){ return h - h * (d / maxData); },
-			   		width: w / dataset.length - barPadding,
-			   		height: function(d){ return h * (d / maxData); },
-			   		fill: function(d){ return "rgb(0,0," + d*10 + ")"}
-			   });
 
-			svg.selectAll("text")
-				.data(dataset)
-				.enter()
-				.append( "text" )
-				.text( function(d) { return d; })
+			svg.append("g")
 				.attrs({
-					x: function(d, i){ return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2},
-					y: function(d){ return h - h*(d / maxData) + 15},
-					"font-family": "sans-serif",
-					"font-size": "11px",
-					"fill": "white",
-					"text-anchor": "middle"
-				});
-			/*var circles = svg.selectAll("circle")
-							 .data(dataset)
-							 .enter()
-							 .append("circle");
-
-			circles.attr("cx", function(d, i) {
-				return (i * 50) + 25;
-			})
-			.attr("cy", h/2)
-			.attr("r", function(d) {
-				return d;
-			})
-			.attr("fill", "green")
-			.attr("stroke", "purple")
-			.attr("stroke-width", function(d){
-				return d/2;
-			});*/
-
-
+					class: "axis",
+					transform: "translate(0,0)" 
+				})
+				.call(yAxis);
 		</script>
 	</body>
 </html>
