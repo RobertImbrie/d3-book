@@ -70,6 +70,9 @@
 							.domain([0, d3.max(dataset, function(d){ return d[1]; })])
 							.range([2, 5]);
 
+			var xAxis = d3.axisBottom()
+							.scale(xScale);
+
 			svg.selectAll("circle")
 				.data(dataset)
 				.enter()
@@ -94,6 +97,9 @@
 					"font-size": 	"11px",
 					fill: 			"red"
 				});
+
+			svg.append("g")
+				.call(xAxis);
 			/*svg.selectAll("rect")
 			   .data(dataset)
 			   .enter()
