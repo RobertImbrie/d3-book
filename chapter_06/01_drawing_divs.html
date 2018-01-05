@@ -43,7 +43,8 @@
 				[250, 50],
 				[100, 33],
 				[330, 95],
-				[410, 12]
+				[410, 12],
+				[600, 150]
 			];/*[ 25, 7, 5, 26, 11, 8, 25, 14, 23, 19, 14, 11, 22, 29, 11, 13, 12, 17, 18, 10, 24, 18, 25, 9, 3 ];*/
 			
 			/*d3.select("body").selectAll("div")
@@ -83,7 +84,8 @@
 							.range([2, 5]);
 
 			var xAxis = d3.axisBottom()
-							.scale(xScale);
+							.scale(xScale)
+							.ticks(5);
 
 			svg.selectAll("circle")
 				.data(dataset)
