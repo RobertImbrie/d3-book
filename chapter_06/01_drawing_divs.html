@@ -60,7 +60,7 @@
 
 				yScale = d3.scaleLinear()
 							.domain([0, d3.max(dataset, function(d) { return d ;})])
-							.range(	[h,  0]),
+							.range(	[0,  h]),
 
 				svg        = d3.select("body")
 							.append("svg")
@@ -101,13 +101,25 @@
 					.on('click', function(){
 						var newData = [];
 						for(var i = 0; i < 20; i++){
-							newData.push( Math.floor( Math.random() * 20) );
+							newData.push( Math.floor( Math.random() * 20 + 1) );
 						}
 						svg.selectAll("rect")
 							.data(newData)
 							.attrs({
 								y: 		function(d){ return h - yScale(d) },
-								height: function(d){ return yScale(d) }
+								height: function(d){ return yScale(d) },
+								fill: function(d){ return "rgb(0,0," + d*10 + ")"}
+
+							});
+
+						svg.selectAll('text')
+							.data(newData)
+							.text(function(d){
+								return d;
+							})
+							.attrs({
+								x: function(d, i){ return xScale(i) + xScale.bandwidth()/2; },
+								y: function(d){ return h - yScale(d) + 14 }
 							});
 					});
 			/*var circles = svg.selectAll("circle")
