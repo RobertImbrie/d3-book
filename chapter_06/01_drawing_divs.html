@@ -100,7 +100,7 @@
 				d3.select('p')
 					.on('click', function(){
 						var newData = [];
-						for(var i = 0; i < 20; i++){
+						for(var i = 0; i < 25; i++){
 							newData.push( Math.floor( Math.random() * 20 + 1) );
 						}
 						svg.selectAll("rect")
@@ -108,6 +108,9 @@
 							.transition()
 							.duration(3000)
 							.ease( d3.easeBounce)
+							.delay( function(d, i){
+								return i / dataset.length * 1000;
+							})
 							.attrs({
 								y: 		function(d){ return h - yScale(d) },
 								height: function(d){ return yScale(d) },
